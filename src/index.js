@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import errorhandler from 'strong-error-handler'
-
+import path from 'path'
 import { port, isDevelopment } from './constants/config'
 
 const app = express()
@@ -9,6 +9,9 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './views'))
+app.use('/static', express.static(path.join(__dirname, './views/pages')))
 
 const arr = []
 // let op = '+'
@@ -27,7 +30,7 @@ app.get('/', (req, res) => {
   //     return accumulator + currentValue
   //   }, 1)
 
-  res.json({ arr })
+  res.render('pages/index', { arr })
 })
 
 app.post('/add', (req, res) => {
@@ -43,7 +46,10 @@ app.post('/add', (req, res) => {
 
   arr.push({ user, message })
 
-  return res.json({ user, message })
+  return res.render('pages/index', { arr })
+})
+app.get('/about', (req, res) => {
+  return res.render('pages/about', { arr })
 })
 
 app.use(

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/static/index.css" />
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <main>
+      <div class="jumbotron list">
+        <ul>
+          <% arr.forEach(function(item) { %>
+          <li>
+            <h4><%= item.user %></h4>
+            <%= item.message %>
+          </li>
+          <% }); %>
+        </ul>
+        <form action="/add" method="POST">
+          <label for="uname">User:</label>
+          <input type="text" id="uname" name="user" value="Mary" />
+          <label for="lname">Message:</label>
+          <input type="text" id="lname" name="message" value="hello" />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </main>
+
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
