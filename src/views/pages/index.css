@@ -1,4 +1,32 @@
 .list {
-  list-style: none;
   background-color: blue;
+}
+.message-list {
+}
+.messages {
+  list-style: none;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user {
+  border: 1px solid black;
+  border-radius: 65px;
+  padding: 20px 12px;
+  background-color: rgb(10, 21, 121);
+  color: white;
+  margin-right: 10px;
+  align-self: flex-start;
+}
+.message {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: white;
+  max-width: 75%;
+}
+.label {
+  margin-left: 5px;
+  color: white;
 }
